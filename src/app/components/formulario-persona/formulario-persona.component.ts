@@ -13,10 +13,9 @@ export class FormularioPersonaComponent {
     secondName: '',
     lastName: '',
     secondLastName: '',
-    birthDate: new Date(),
     edad: 0,
     escolaridad: '',
-    sexo: '',
+    sexo: 'mujer',
   };
 
   personas: Persona[] = [];
@@ -34,7 +33,6 @@ export class FormularioPersonaComponent {
       secondName: '',
       lastName: '',
       secondLastName: '',
-      birthDate: new Date(),
       edad: 0,
       escolaridad: '',
       sexo: '',

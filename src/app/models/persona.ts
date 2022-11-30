@@ -3,7 +3,7 @@ export interface Persona {
     secondName: string;
     lastName: string;
     secondLastName: string;
-    birthDate: Date;
+    birthDate?: Date;
     edad: number;
     escolaridad: string;
     sexo: string;

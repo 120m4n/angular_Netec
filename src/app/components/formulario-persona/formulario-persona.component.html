@@ -1,12 +1,12 @@
 <div class="row p-2">
-    <div class="container p-3 col-6">
+    <div class="container ps-3 col-6">
         <div class="row">
             <div class="col-12">
                 <h3>Formulario</h3>
             </div>
         </div>
-        <form (ngSubmit)="onSubmit()" #forma="ngForm">
-            <label for="firstName"> <b>Nombre</b></label>
+        <form (ngSubmit)="onSubmit()" #personaForm="ngForm">
+            <label for="firstName"> <b>Primer Nombre</b></label>
             <input type="text" id="firstName" name="firstName" #firstName="ngModel" [(ngModel)]="persona.firstName"
                 placeholder="Ingrese su nombre" minlength="5" class="form-control" required
                 [ngClass]="{'is-valid': firstName.valid, 'is-invalid':firstName.invalid}">
@@ -25,7 +25,7 @@
                 [ngClass]="{'is-valid': secondName.valid, 'is-invalid':secondName.invalid}">
 
 
-            <label for="lastName"> <b>Apellido</b></label>
+            <label for="lastName"> <b>Primer Apellido</b></label>
             <input type="text" id="lastName" name="lastName" #lastName="ngModel" [(ngModel)]="persona.lastName"
                 placeholder="Ingrese su apellido" minlength="5" class="form-control" required
                 [ngClass]="{'is-valid': lastName.valid, 'is-invalid':lastName.invalid}">
@@ -61,11 +61,18 @@
                 <div *ngIf="birthDate.errors?.['required']">
                     La fecha de nacimiento es requerida
                 </div>
+                <!-- not a valid date -->
+                <div *ngIf="birthDate.errors?.['date']">
+                    La fecha de nacimiento no es valida
+                </div>
+
+                
             </div>
 
             <label for="edad"><b>Edad</b></label>
             <input type="number" id="edad" name="edad" #edad="ngModel" [(ngModel)]="persona.edad"
-                placeholder="Ingrese su edad" class="form-control" required
+                placeholder="Ingrese su edad" class="form-control" 
+                min=10 max=70 required
                 [ngClass]="{'is-valid': edad.valid, 'is-invalid':edad.invalid}">
             <div class="invalid-feedback" *ngIf="edad.invalid && (edad.dirty || edad.touched)">
                 <div *ngIf="edad.errors?.['required']">
@@ -89,28 +96,34 @@
                 </div>
             </div>
 
-            <label for="sexo"><b>Sexo</b></label>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" id="option1">
+            <label class="pe-3" for="sexo"><b>Sexo</b></label>
+            <!-- <div class="form-group"> -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sexo" 
+                        id="option1" value="hombre"
+                        [(ngModel)]="persona.sexo">
                     <label class="form-check-label" for="option1">
-                        Default radio
+                        Hombre
                     </label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" id="option2" checked>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sexo" 
+                    id="option2" value="mujer" checked
+                    [(ngModel)]="persona.sexo">
                     <label class="form-check-label" for="option2">
-                        Default checked radio
+                        Mujer
                     </label>
                 </div>
-            </div>
+            <!-- </div> -->
+
+            <button type="submit" class="btn btn-primary" [disabled]="personaForm.invalid">Guardar</button>
 
         </form>
     </div>
-    <div class="container p-3 col-6">
+    <div class="container pe-3 col-6">
         <div class="row">
-            <div class="col-12">
-                <h3>Resultado</h3>
+            <div class="col">
+                <h3>Temporal Debug</h3>
             </div>
         </div>
         <div class="row">
@@ -121,5 +134,32 @@
     </div>
 </div>
 <div class="row">
+    <!-- display personas array values in table format -->
+    <div class="container col-6">
+        <h3>Personas</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Edad</th>
+                    <th>Escolaridad</th>
+                    <th>Sexo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let persona of personas">
+                    <td>{{ persona.firstName }}</td>
+                    <td>{{ persona.lastName }}</td>
+                    <td>{{ persona.secondLastName }}</td>
+                    <td>{{ persona.birthDate }}</td>
+                    <td>{{ persona.edad }}</td>
+                    <td>{{ persona.escolaridad }}</td>
+                    <td>{{ persona.sexo }}</td>
+                </tr>
+            </tbody>
+        </table>
 
 </div>
