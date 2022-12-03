@@ -7,13 +7,29 @@ import { Persona } from 'src/app/models/persona';
   styleUrls: ['./formulario-persona.component.css']
 })
 export class FormularioPersonaComponent {
+  
+  setEdad(date: Date): void {
+      this.edad = new Date().getFullYear() - new Date(date).getFullYear();
+      console.log(this.edad);
+  }
+
+  checkEdad(date : Date| undefined) : boolean {
+    if (date) {
+      return new Date().getFullYear() - new Date(date).getFullYear() < 18;
+    }
+      return false;  
+  }
+
+
+
+
+  edad: number = 0;
 
   persona: Persona = {
     firstName: '',
     secondName: '',
     lastName: '',
     secondLastName: '',
-    edad: 0,
     escolaridad: '',
     sexo: 'mujer',
   };
@@ -33,10 +49,14 @@ export class FormularioPersonaComponent {
       secondName: '',
       lastName: '',
       secondLastName: '',
-      edad: 0,
       escolaridad: '',
       sexo: '',
     };
+  }
+
+  onSelectChange(event: any) {
+    // console.log(event.target.value);
+    this.setEdad(event.target.value);
   }
 
 }

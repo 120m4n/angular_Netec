@@ -56,29 +56,16 @@
             <label for="birthDate"><b>Fecha Nacimiento</b></label>
             <input type="date" id="birthDate" name="birthDate" #birthDate="ngModel" [(ngModel)]="persona.birthDate"
                 placeholder="Ingrese su fecha de nacimiento" class="form-control" required
-                [ngClass]="{'is-valid': birthDate.valid, 'is-invalid':birthDate.invalid}">
-            <div class="invalid-feedback" *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
-                <div *ngIf="birthDate.errors?.['required']">
-                    La fecha de nacimiento es requerida
-                </div>
-                <!-- not a valid date -->
-                <div *ngIf="birthDate.errors?.['date']">
-                    La fecha de nacimiento no es valida
-                </div>
+                [ngClass]="{'is-valid': birthDate.valid, 'is-invalid':birthDate.invalid}"
+                (change)="onSelectChange($event)">
 
-                
-            </div>
 
-            <label for="edad"><b>Edad</b></label>
-            <input type="number" id="edad" name="edad" #edad="ngModel" [(ngModel)]="persona.edad"
-                placeholder="Ingrese su edad" class="form-control" 
-                min=10 max=70 required
-                [ngClass]="{'is-valid': edad.valid, 'is-invalid':edad.invalid}">
-            <div class="invalid-feedback" *ngIf="edad.invalid && (edad.dirty || edad.touched)">
-                <div *ngIf="edad.errors?.['required']">
-                    La edad es requerida
-                </div>
-            </div>
+            <!-- age read only -->
+            <label for="age"><b>Edad</b></label>
+            <input type="text" id="age" name="age" #age="ngModel" [(ngModel)]="edad" placeholder="Ingrese su edad"
+                class="form-control" readonly>
+
+
 
             <label for="Escolaridad"><b>Escolaridad</b></label>
             <select id="escolaridad" name="escolaridad" #escolaridad="ngModel" [(ngModel)]="persona.escolaridad"
@@ -144,21 +131,21 @@
                     <th>Apellido</th>
                     <th>Segundo Apellido</th>
                     <th>Fecha Nacimiento</th>
-                    <th>Edad</th>
                     <th>Escolaridad</th>
                     <th>Sexo</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let persona of personas">
-                    <td>{{ persona.firstName }}</td>
-                    <td>{{ persona.lastName }}</td>
-                    <td>{{ persona.secondLastName }}</td>
-                    <td>{{ persona.birthDate }}</td>
-                    <td>{{ persona.edad }}</td>
-                    <td>{{ persona.escolaridad }}</td>
-                    <td>{{ persona.sexo }}</td>
-                </tr>
+                <ng-template ngFor let-persona [ngForOf]="personas">
+                    <tr [ngClass]="checkEdad(persona.birthDate)?'red':''">
+                        <td>{{ persona.firstName }}</td>
+                        <td>{{ persona.lastName }}</td>
+                        <td>{{ persona.secondLastName }}</td>
+                        <td>{{ persona.birthDate }}</td>
+                        <td>{{ persona.escolaridad }}</td>
+                        <td>{{ persona.sexo }}</td>
+                    </tr>
+                </ng-template>
             </tbody>
         </table>
 

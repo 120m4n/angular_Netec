@@ -4,8 +4,6 @@ export interface Persona {
     lastName: string;
     secondLastName: string;
     birthDate?: Date;
-    edad: number;
     escolaridad: string;
     sexo: string;
-
 }
