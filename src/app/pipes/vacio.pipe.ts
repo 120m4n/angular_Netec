@@ -7,7 +7,7 @@ export class VacioPipe implements PipeTransform {
 
   transform(value: any): any {
     if (value === undefined || value === null || value === '') {
-      return 'Sin valor';
+      return '--n/a--';
     }
     return value;
   }

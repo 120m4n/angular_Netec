@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Persona } from 'src/app/models/persona';
+import { PersonaService } from 'src/app/services/persona.service';
 
 @Component({
   selector: 'app-formulario-persona',
@@ -11,12 +12,12 @@ export class FormularioPersonaComponent {
     this.persona.sexo = _t126.value;
   }
   
-  setEdad(date: Date): void {
+  setEdad(date: string | Date): void {
       this.edad = new Date().getFullYear() - new Date(date).getFullYear();
       console.log(this.edad);
   }
 
-  checkEdad(date : Date| undefined) : boolean {
+  checkEdad(date : string | Date| undefined) : boolean {
     if (date) {
       return new Date().getFullYear() - new Date(date).getFullYear() < 18;
     }
@@ -45,22 +46,37 @@ export class FormularioPersonaComponent {
 
   personas: Persona[] = [];
   
-  constructor() { }
+  constructor(private personaService: PersonaService) { }
 
   ngOnInit(): void {
+    this.getPersonas();
   }
+
+  getPersonas() {
+    this.personaService.getPersonas().subscribe((data: Persona[]) => {
+      this.personas = data;
+      console.log(this.personas);
+    });
+  }
+
+  createPersona() {
+    this.personaService.createPersona(this.persona).subscribe((data: Persona) => {
+      this.personas.push(data);
+      this.persona = {
+        firstName: '',
+        secondName: '',
+        lastName: '',
+        secondLastName: '',
+        escolaridad: '',
+        sexo: 'mujer',
+      };
+    });
+  }
+
 
   onSubmit() {
     console.log(this.persona);
-    this.personas.push(this.persona);
-    this.persona = {
-      firstName: '',
-      secondName: '',
-      lastName: '',
-      secondLastName: '',
-      escolaridad: '',
-      sexo: '',
-    };
+    this.createPersona();
     this.edad = 0;
   }
 

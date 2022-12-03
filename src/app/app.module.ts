@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { VacioPipe } from './pipes/vacio.pipe';
+import { PersonaService } from './services/persona.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,10 +32,11 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
 
   ],
-  providers: [],
+  providers: [PersonaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

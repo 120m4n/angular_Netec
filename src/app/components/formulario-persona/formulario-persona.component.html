@@ -132,7 +132,7 @@
                 </thead>
                 <tbody>
                     <ng-template ngFor let-persona [ngForOf]="personas">
-                        <tr [ngClass]="checkEdad(persona.birthDate)?'red':''">
+                        <tr [ngClass]="checkEdad(persona.birthDate)?'menor':''">
                             <td>{{ persona.firstName }}</td>
                             <td>{{ persona.secondName | vacio}}</td>
                             <td>{{ persona.lastName }}</td>
