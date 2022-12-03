@@ -1,123 +1,116 @@
 <div class="row p-2">
-    <div class="container ps-3 col-6">
+    <div class="container ps-3 col-12">
         <div class="row">
             <div class="col-12">
                 <h3>Formulario</h3>
             </div>
         </div>
-        <form (ngSubmit)="onSubmit()" #personaForm="ngForm">
-            <label for="firstName"> <b>Primer Nombre</b></label>
-            <input type="text" id="firstName" name="firstName" #firstName="ngModel" [(ngModel)]="persona.firstName"
-                placeholder="Ingrese su nombre" minlength="5" class="form-control" required
-                [ngClass]="{'is-valid': firstName.valid, 'is-invalid':firstName.invalid}">
-            <div class="invalid-feedback" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
-                <div *ngIf="firstName.errors?.['required']">
-                    El nombre es requerido
-                </div>
-                <div *ngIf="firstName.errors?.['minlength']">
-                    El nombre debe tener al menos 5 caracteres
-                </div>
-            </div>
+        <form (ngSubmit)="onSubmit()" #personaForm="ngForm" class="row g-2">
+            <div class="form-floating mb-3 col-6">
 
-            <label for="secondName"><b>Segundo Nombre</b></label>
-            <input type="text" id="secondName" name="secondName" #secondName="ngModel" [(ngModel)]="persona.secondName"
-                placeholder="Ingrese su segundo nombre" minlength="5" class="form-control" 
-                [ngClass]="{'is-valid': secondName.valid, 'is-invalid':secondName.invalid}">
+                <input type="text" id="firstName" name="firstName" #firstName="ngModel" [(ngModel)]="persona.firstName"
+                    placeholder="Ingrese su nombre" minlength="5" class="form-control" required
+                    [ngClass]="{'is-valid': firstName.valid, 'is-invalid':firstName.invalid}">
+                <label for="firstName" class="form-label">Primer Nombre</label>
 
-
-            <label for="lastName"> <b>Primer Apellido</b></label>
-            <input type="text" id="lastName" name="lastName" #lastName="ngModel" [(ngModel)]="persona.lastName"
-                placeholder="Ingrese su apellido" minlength="5" class="form-control" required
-                [ngClass]="{'is-valid': lastName.valid, 'is-invalid':lastName.invalid}">
-            <div class="invalid-feedback" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-                <div *ngIf="lastName.errors?.['required']">
-                    El apellido es requerido
-                </div>
-                <div *ngIf="lastName.errors?.['minlength']">
-                    El apellido debe tener al menos 5 caracteres
+                <div class="invalid-feedback" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                    <div *ngIf="firstName.errors?.['required']">
+                        El nombre es requerido
+                    </div>
+                    <div *ngIf="firstName.errors?.['minlength']">
+                        El nombre debe tener al menos 5 caracteres
+                    </div>
                 </div>
             </div>
 
-            <label for="secondLastName"><b>Segundo Apellido</b></label>
-            <input type="text" id="secondLastName" name="secondLastName" #secondLastName="ngModel"
-                [(ngModel)]="persona.secondLastName" placeholder="Ingrese su segundo apellido" minlength="5"
-                class="form-control" required
-                [ngClass]="{'is-valid': secondLastName.valid, 'is-invalid':secondLastName.invalid}">
-            <div class="invalid-feedback"
-                *ngIf="secondLastName.invalid && (secondLastName.dirty || secondLastName.touched)">
-                <div *ngIf="secondLastName.errors?.['required']">
-                    El segundo apellido es requerido
-                </div>
-                <div *ngIf="secondLastName.errors?.['minlength']">
-                    El segundo apellido debe tener al menos 5 caracteres
+
+            <div class="form-floating mb-3 col-6">
+
+                <input type="text" id="secondName" name="secondName" #secondName="ngModel"
+                    [(ngModel)]="persona.secondName" placeholder="Ingrese su segundo nombre" minlength="5"
+                    class="form-control" [ngClass]="{'is-valid': secondName.valid, 'is-invalid':secondName.invalid}">
+                <label for="secondName" class="form-label">Segundo Nombre</label>
+
+            </div>
+
+            <div class="form-floating mb-3 col-6">
+
+                <input type="text" id="lastName" name="lastName" #lastName="ngModel" [(ngModel)]="persona.lastName"
+                    placeholder="Ingrese su apellido" minlength="5" class="form-control" required
+                    [ngClass]="{'is-valid': lastName.valid, 'is-invalid':lastName.invalid}">
+                <label for="lastName" class="form-label">Primer Apellido</label>
+                <div class="invalid-feedback" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                    <div *ngIf="lastName.errors?.['required']">
+                        El apellido es requerido
+                    </div>
+                    <div *ngIf="lastName.errors?.['minlength']">
+                        El apellido debe tener al menos 5 caracteres
+                    </div>
                 </div>
             </div>
 
-            <label for="birthDate"><b>Fecha Nacimiento</b></label>
-            <input type="date" id="birthDate" name="birthDate" #birthDate="ngModel" [(ngModel)]="persona.birthDate"
-                placeholder="Ingrese su fecha de nacimiento" class="form-control" required
-                [ngClass]="{'is-valid': birthDate.valid, 'is-invalid':birthDate.invalid}"
-                (change)="onSelectChange($event)">
+            <div class="form-floating mb-3 col-6">
 
+                <input type="text" id="secondLastName" name="secondLastName" #secondLastName="ngModel"
+                    [(ngModel)]="persona.secondLastName" placeholder="Ingrese su segundo apellido" minlength="5"
+                    class="form-control" required
+                    [ngClass]="{'is-valid': secondLastName.valid, 'is-invalid':secondLastName.invalid}">
+                <label for="secondLastName" class="form-label">Segundo Apellido</label>
+                <div class="invalid-feedback"
+                    *ngIf="secondLastName.invalid && (secondLastName.dirty || secondLastName.touched)">
+                    <div *ngIf="secondLastName.errors?.['required']">
+                        El segundo apellido es requerido
+                    </div>
+                    <div *ngIf="secondLastName.errors?.['minlength']">
+                        El segundo apellido debe tener al menos 5 caracteres
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3 col-6">
+
+                <input type="date" id="birthDate" name="birthDate" #birthDate="ngModel" [(ngModel)]="persona.birthDate"
+                    placeholder="Ingrese su fecha de nacimiento" class="form-control" required
+                    [ngClass]="{'is-valid': birthDate.valid, 'is-invalid':birthDate.invalid}"
+                    (change)="onSelectChange($event)">
+                <label for="birthDate" class="form-label">Fecha Nacimiento</label>
+            </div>
 
             <!-- age read only -->
-            <label for="age"><b>Edad</b></label>
-            <input type="text" id="age" name="age" #age="ngModel" [(ngModel)]="edad" placeholder="Ingrese su edad"
-                class="form-control" readonly>
-
-
-
-            <label for="Escolaridad"><b>Escolaridad</b></label>
-            <select id="escolaridad" name="escolaridad" #escolaridad="ngModel" [(ngModel)]="persona.escolaridad"
-                class="form-control" required
-                [ngClass]="{'is-valid': escolaridad.valid, 'is-invalid':escolaridad.invalid}">
-                <option value="">Seleccione una opción</option>
-                <option value="Primaria">Primaria</option>
-                <option value="Secundaria">Secundaria</option>
-                <option value="Preparatoria">Preparatoria</option>
-                <option value="Universidad">Universidad</option>
-            </select>
-            <div class="invalid-feedback" *ngIf="escolaridad.invalid && (escolaridad.dirty || escolaridad.touched)">
-                <div *ngIf="escolaridad.errors?.['required']">
-                    La escolaridad es requerida
-                </div>
+            <div class="form-floating mb-3 col-6">
+                <input type="text" id="age" name="age" #age="ngModel" [(ngModel)]="edad" placeholder="Ingrese su edad"
+                    class="form-control" readonly>
+                <label for="age" class="form-label">Edad</label>
             </div>
 
-            <label class="pe-3" for="sexo"><b>Sexo</b></label>
-            <!-- <div class="form-group"> -->
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sexo" 
-                        id="option1" value="hombre"
-                        [(ngModel)]="persona.sexo">
-                    <label class="form-check-label" for="option1">
-                        Hombre
-                    </label>
+            <div class="form-floating mb-3 col-6">
+                <select class="form-select" id="escolaridad" name="escolaridad" #escolaridad="ngModel"
+                    [(ngModel)]="persona.escolaridad" class="form-control" required
+                    [ngClass]="{'is-valid': escolaridad.valid, 'is-invalid':escolaridad.invalid}">
+                    <option value="">Seleccione una opción</option>
+                    <option value="Primaria">Primaria</option>
+                    <option value="Secundaria">Secundaria</option>
+                    <option value="Preparatoria">Preparatoria</option>
+                    <option value="Universidad">Universidad</option>
+                </select>
+                <label for="Escolaridad" class="form-label">Estudios</label>
+                <div class="invalid-feedback" *ngIf="escolaridad.invalid && (escolaridad.dirty || escolaridad.touched)">
+                    <div *ngIf="escolaridad.errors?.['required']">
+                        La escolaridad es requerida
+                    </div>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sexo" 
-                    id="option2" value="mujer" checked
-                    [(ngModel)]="persona.sexo">
-                    <label class="form-check-label" for="option2">
-                        Mujer
-                    </label>
+            </div>
+            <div  class="mb-3 col-6" >
+                <label class="form-label mb-3">Sexo: &nbsp;</label>
+                <div class="form-check form-check-inline mb-3" *ngFor="let sex of sexOptions">
+                    <input class="form-check-input" type="radio" name="sexo" (click)="cambiarSexo(sex)">
+                    <label class="form-check-label">{{sex.name}}</label>
                 </div>
-            <!-- </div> -->
-
-            <button type="submit" class="btn btn-primary" [disabled]="personaForm.invalid">Guardar</button>
-
+            </div>
+             
+            <button type="submit" class="btn btn-primary col-6" [disabled]="personaForm.invalid">Guardar</button>
+            
         </form>
-    </div>
-    <div class="container pe-3 col-6">
-        <div class="row">
-            <div class="col">
-                <h3>Temporal Debug</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <pre>{{ persona | json }}</pre>
-            </div>
-        </div>
     </div>
 </div>
 <div class="row">
@@ -149,4 +142,4 @@
             </tbody>
         </table>
 
-</div>
+    </div>

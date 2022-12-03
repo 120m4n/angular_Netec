@@ -7,6 +7,9 @@ import { Persona } from 'src/app/models/persona';
   styleUrls: ['./formulario-persona.component.css']
 })
 export class FormularioPersonaComponent {
+  cambiarSexo(_t126: { name: string; value: string; }) {
+    this.persona.sexo = _t126.value;
+  }
   
   setEdad(date: Date): void {
       this.edad = new Date().getFullYear() - new Date(date).getFullYear();
@@ -19,6 +22,12 @@ export class FormularioPersonaComponent {
     }
       return false;  
   }
+
+  sexOptions = [
+    { name: 'Masculino', value: 'M' },
+    { name: 'Femenino', value: 'F' },
+    { name: 'Otro', value: 'O' },
+  ];
 
 
 
