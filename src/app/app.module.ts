@@ -5,16 +5,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TemplateFormsComponent } from './components/template-forms/template-forms.component';
 import { FormularioPersonaComponent } from './components/formulario-persona/formulario-persona.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'personas', component: FormularioPersonaComponent },
+  { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateFormsComponent,
-    FormularioPersonaComponent
+    FormularioPersonaComponent,
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes),
+    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

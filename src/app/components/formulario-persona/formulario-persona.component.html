@@ -1,12 +1,12 @@
-<div class="row p-2">
-    <div class="container ps-3 col-12">
+<div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-12">
                 <h3>Formulario</h3>
             </div>
         </div>
         <form (ngSubmit)="onSubmit()" #personaForm="ngForm" class="row g-2">
-            <div class="form-floating mb-3 col-6">
+            <div class="form-floating mb-md-3 col-md-6">
 
                 <input type="text" id="firstName" name="firstName" #firstName="ngModel" [(ngModel)]="persona.firstName"
                     placeholder="Ingrese su nombre" minlength="5" class="form-control" required
@@ -18,22 +18,22 @@
                         El nombre es requerido
                     </div>
                     <div *ngIf="firstName.errors?.['minlength']">
-                        El nombre debe tener al menos 5 caracteres
+                        El nombre debe tener al menos 4 caracteres
                     </div>
                 </div>
             </div>
 
 
-            <div class="form-floating mb-3 col-6">
+            <div class="form-floating mb-md-3 col-md-6">
 
                 <input type="text" id="secondName" name="secondName" #secondName="ngModel"
-                    [(ngModel)]="persona.secondName" placeholder="Ingrese su segundo nombre" minlength="5"
+                    [(ngModel)]="persona.secondName" placeholder="Ingrese su segundo nombre" minlength="4"
                     class="form-control" [ngClass]="{'is-valid': secondName.valid, 'is-invalid':secondName.invalid}">
                 <label for="secondName" class="form-label">Segundo Nombre</label>
 
             </div>
 
-            <div class="form-floating mb-3 col-6">
+            <div class="form-floating mb-md-3 col-md-6">
 
                 <input type="text" id="lastName" name="lastName" #lastName="ngModel" [(ngModel)]="persona.lastName"
                     placeholder="Ingrese su apellido" minlength="5" class="form-control" required
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="form-floating mb-3 col-6">
+            <div class="form-floating mb-md-3 col-md-6">
 
                 <input type="text" id="secondLastName" name="secondLastName" #secondLastName="ngModel"
                     [(ngModel)]="persona.secondLastName" placeholder="Ingrese su segundo apellido" minlength="5"
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <div class="form-floating mb-3 col-6">
+            <div class="form-floating mb-md-3 col-md-6">
 
                 <input type="date" id="birthDate" name="birthDate" #birthDate="ngModel" [(ngModel)]="persona.birthDate"
                     placeholder="Ingrese su fecha de nacimiento" class="form-control" required
@@ -77,13 +77,13 @@
             </div>
 
             <!-- age read only -->
-            <div class="form-floating mb-3 col-6">
+            <div class="form-floating mb-md-3 col-md-6">
                 <input type="text" id="age" name="age" #age="ngModel" [(ngModel)]="edad" placeholder="Ingrese su edad"
                     class="form-control" readonly>
                 <label for="age" class="form-label">Edad</label>
             </div>
 
-            <div class="form-floating mb-3 col-6">
+            <div class="form-floating mb-md-3 col-md-6">
                 <select class="form-select" id="escolaridad" name="escolaridad" #escolaridad="ngModel"
                     [(ngModel)]="persona.escolaridad" class="form-control" required
                     [ngClass]="{'is-valid': escolaridad.valid, 'is-invalid':escolaridad.invalid}">
@@ -100,46 +100,48 @@
                     </div>
                 </div>
             </div>
-            <div  class="mb-3 col-6" >
+            <div class="mb-md-3 col-md-6">
                 <label class="form-label mb-3">Sexo: &nbsp;</label>
                 <div class="form-check form-check-inline mb-3" *ngFor="let sex of sexOptions">
                     <input class="form-check-input" type="radio" name="sexo" (click)="cambiarSexo(sex)">
                     <label class="form-check-label">{{sex.name}}</label>
                 </div>
             </div>
-             
-            <button type="submit" class="btn btn-primary col-6" [disabled]="personaForm.invalid">Guardar</button>
-            
+
+            <button type="submit" class="btn btn-primary mb-5 col-6" [disabled]="personaForm.invalid">Guardar</button>
+
         </form>
     </div>
-</div>
-<div class="row">
-    <!-- display personas array values in table format -->
-    <div class="container col-6">
-        <h3>Personas</h3>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Segundo Apellido</th>
-                    <th>Fecha Nacimiento</th>
-                    <th>Escolaridad</th>
-                    <th>Sexo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <ng-template ngFor let-persona [ngForOf]="personas">
-                    <tr [ngClass]="checkEdad(persona.birthDate)?'red':''">
-                        <td>{{ persona.firstName }}</td>
-                        <td>{{ persona.lastName }}</td>
-                        <td>{{ persona.secondLastName }}</td>
-                        <td>{{ persona.birthDate }}</td>
-                        <td>{{ persona.escolaridad }}</td>
-                        <td>{{ persona.sexo }}</td>
+    <div class="row fs-6">
+        {{persona | json}}
+    </div>
+    <div class="row">
+        <!-- display personas array values in table format -->
+            <h3>Personas</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Escolaridad</th>
+                        <th>Sexo</th>
                     </tr>
-                </ng-template>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <ng-template ngFor let-persona [ngForOf]="personas">
+                        <tr [ngClass]="checkEdad(persona.birthDate)?'red':''">
+                            <td>{{ persona.firstName }}</td>
+                            <td>{{ persona.lastName }}</td>
+                            <td>{{ persona.secondLastName }}</td>
+                            <td>{{ persona.birthDate }}</td>
+                            <td>{{ persona.escolaridad }}</td>
+                            <td>{{ persona.sexo }}</td>
+                        </tr>
+                    </ng-template>
+                </tbody>
+            </table>
 
     </div>
+</div>

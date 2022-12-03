@@ -61,6 +61,7 @@ export class FormularioPersonaComponent {
       escolaridad: '',
       sexo: '',
     };
+    this.edad = 0;
   }
 
   onSelectChange(event: any) {
