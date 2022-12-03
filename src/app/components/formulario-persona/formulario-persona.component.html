@@ -122,6 +122,7 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Segundo Nombre</th>
                         <th>Apellido</th>
                         <th>Segundo Apellido</th>
                         <th>Fecha Nacimiento</th>
@@ -133,6 +134,7 @@
                     <ng-template ngFor let-persona [ngForOf]="personas">
                         <tr [ngClass]="checkEdad(persona.birthDate)?'red':''">
                             <td>{{ persona.firstName }}</td>
+                            <td>{{ persona.secondName | vacio}}</td>
                             <td>{{ persona.lastName }}</td>
                             <td>{{ persona.secondLastName }}</td>
                             <td>{{ persona.birthDate }}</td>

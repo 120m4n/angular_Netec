@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { VacioPipe } from './pipes/vacio.pipe';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
     TemplateFormsComponent,
     FormularioPersonaComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    VacioPipe
   ],
   imports: [
     BrowserModule,
