@@ -19,19 +19,19 @@ export class PersonaService {
     return this.http.get<Persona[]>(`${this.url}/personas`);
   }
 
-  getPersona(id: string) {
-    return this.http.get(`${this.url}/personas/${id}`);
+  getPersona(id: number) {
+    return this.http.get<Persona>(`${this.url}/personas/${id}`);
   }
 
   createPersona(persona: any) {
     return this.http.post<Persona>(`${this.url}/personas`, persona);
   }
 
-  updatePersona(id: string, persona: any) {
+  updatePersona(id: number, persona: any) {
     return this.http.put(`${this.url}/personas/${id}`, persona);
   }
 
-  deletePersona(id: string) {
+  deletePersona(id: number) {
     return this.http.delete(`${this.url}/personas/${id}`);
   }
 

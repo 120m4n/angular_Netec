@@ -3,22 +3,12 @@
     {
       "id": 1,
       "firstName": "Carlos",
-      "secondName": "Francisco",
+      "secondName": "Francisco Abelardo",
       "lastName": "Paez",
       "secondLastName": "Pereira",
       "birthDate": "2015-01-01",
       "escolaridad": "Bachillerato",
-      "sexo": "Masculino"
-    },
-    {
-      "id": 2,
-      "firstName": "Maria",
-      "secondName": "",
-      "lastName": "Garcia",
-      "secondLastName": "Gafaro",
-      "birthDate": "1990-01-01",
-      "escolaridad": "Bachillerato",
-      "sexo": "Femenino"
+      "sexo": "M"
     },
     {
       "id": 3,
@@ -28,7 +18,7 @@
       "secondLastName": "Tronchatoro",
       "birthDate": "1990-01-01",
       "escolaridad": "Bachillerato",
-      "sexo": "Masculino"
+      "sexo": "M"
     },
     {
       "id": 4,
@@ -38,7 +28,7 @@
       "secondLastName": "Torres",
       "birthDate": "1990-01-01",
       "escolaridad": "Bachillerato",
-      "sexo": "Masculino"
+      "sexo": "M"
     },
     {
       "id": 5,
@@ -48,7 +38,7 @@
       "secondLastName": "Torres",
       "birthDate": "1990-01-01",
       "escolaridad": "Bachillerato",
-      "sexo": "Femenino"
+      "sexo": "F"
     },
     {
       "id": 6,
@@ -58,7 +48,7 @@
       "secondLastName": "Ordaz",
       "birthDate": "2016-01-01",
       "escolaridad": "Bachillerato",
-      "sexo": "Femenino"
+      "sexo": "F"
     },
     {
       "id": 7,
@@ -68,7 +58,7 @@
       "secondLastName": "Abendano",
       "birthDate": "1990-01-01",
       "escolaridad": "Bachillerato",
-      "sexo": "Masculino"
+      "sexo": "M"
     },
     {
       "id": 8,
@@ -78,27 +68,17 @@
       "secondLastName": "Garcia",
       "birthDate": "1990-01-01",
       "escolaridad": "Bachillerato",
-      "sexo": "Femenino"
+      "sexo": "F"
     },
     {
+      "id": 9,
       "firstName": "roman",
-      "secondName": "",
+      "secondName": "antonio",
       "lastName": "sarmiento",
       "secondLastName": "gomez",
       "escolaridad": "Universidad",
       "sexo": "M",
-      "birthDate": "1982-04-08",
-      "id": 9
-    },
-    {
-      "firstName": "fabian",
-      "secondName": "",
-      "lastName": "garcia",
-      "secondLastName": "peñas",
-      "escolaridad": "Primaria",
-      "sexo": "M",
-      "birthDate": "2015-01-01",
-      "id": 10
+      "birthDate": "1982-04-08"
     }
   ]
 }

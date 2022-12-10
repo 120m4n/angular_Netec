@@ -9,7 +9,7 @@
             <div class="form-floating mb-md-3 col-md-6">
 
                 <input type="text" id="firstName" name="firstName" #firstName="ngModel" [(ngModel)]="persona.firstName"
-                    placeholder="Ingrese su nombre" minlength="5" class="form-control" required
+                    placeholder="Ingrese su nombre" minlength="3" class="form-control" required
                     [ngClass]="{'is-valid': firstName.valid, 'is-invalid':firstName.invalid}">
                 <label for="firstName" class="form-label">Primer Nombre</label>
 
@@ -18,7 +18,7 @@
                         El nombre es requerido
                     </div>
                     <div *ngIf="firstName.errors?.['minlength']">
-                        El nombre debe tener al menos 4 caracteres
+                        El nombre debe tener al menos 3 caracteres
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             <div class="form-floating mb-md-3 col-md-6">
 
                 <input type="text" id="lastName" name="lastName" #lastName="ngModel" [(ngModel)]="persona.lastName"
-                    placeholder="Ingrese su apellido" minlength="5" class="form-control" required
+                    placeholder="Ingrese su apellido" minlength="3" class="form-control" required
                     [ngClass]="{'is-valid': lastName.valid, 'is-invalid':lastName.invalid}">
                 <label for="lastName" class="form-label">Primer Apellido</label>
                 <div class="invalid-feedback" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
@@ -44,7 +44,7 @@
                         El apellido es requerido
                     </div>
                     <div *ngIf="lastName.errors?.['minlength']">
-                        El apellido debe tener al menos 5 caracteres
+                        El apellido debe tener al menos 3 caracteres
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
     <div class="row">
         <!-- display personas array values in table format -->
             <h3>Personas</h3>
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -128,18 +128,23 @@
                         <th>Fecha Nacimiento</th>
                         <th>Escolaridad</th>
                         <th>Sexo</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <ng-template ngFor let-persona [ngForOf]="personas">
-                        <tr [ngClass]="checkEdad(persona.birthDate)?'menor':''">
-                            <td>{{ persona.firstName }}</td>
-                            <td>{{ persona.secondName | vacio}}</td>
-                            <td>{{ persona.lastName }}</td>
-                            <td>{{ persona.secondLastName }}</td>
-                            <td>{{ persona.birthDate }}</td>
-                            <td>{{ persona.escolaridad }}</td>
-                            <td>{{ persona.sexo }}</td>
+                    <ng-template ngFor let-item [ngForOf]="personas">
+                        <tr [ngClass]="checkEdad(item.birthDate)?'menor':''" [class.table-info]="item == persona">
+                            <td>{{ item.firstName }}</td>
+                            <td>{{ item.secondName | vacio}}</td>
+                            <td>{{ item.lastName }}</td>
+                            <td>{{ item.secondLastName }}</td>
+                            <td>{{ item.birthDate }}</td>
+                            <td>{{ item.escolaridad }}</td>
+                            <td>{{ item.sexo }}</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" (click)="editarPersona(item)">Editar</button>
+                                <button class="btn btn-danger btn-sm" (click)="eliminarPersona(item)">Eliminar</button>
+                            </td>
                         </tr>
                     </ng-template>
                 </tbody>
